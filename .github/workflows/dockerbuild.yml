@@ -7,10 +7,8 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     container:
-      image: lakruzz/androiddev
-      options: --entrypoint "/bin/bash"
+      image: lakruzz/jekyll-plus
     steps:
-      - uses: actions/checkout@v3
-      - run: gradle
+      - run: ls
 
       
