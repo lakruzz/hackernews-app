@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: lakruzz/jekyll-plus
+      options: --entrypoint "/bin/bash"
     steps:
       - run: ls
 
