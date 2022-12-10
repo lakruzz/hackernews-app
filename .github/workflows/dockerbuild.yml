@@ -1,7 +1,7 @@
 # https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container#example-running-a-job-within-a-container
 name: Java CI
 
-on: workflow_call
+on: [push]
 
 jobs:
   docker-build:
