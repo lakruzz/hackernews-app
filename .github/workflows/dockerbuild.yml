@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: lakruzz/jekyll-plus
-      options: --entrypoint=jekyll
+      volumes:
+        - ${{ github.workspace }}:/workdir
+      options: --workdir=/workdir
     steps:
       - run: ls
       - run: jekyll
