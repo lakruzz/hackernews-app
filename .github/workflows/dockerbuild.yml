@@ -1,15 +1,14 @@
 # https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container#example-running-a-job-within-a-container
 name: Java CI
 
-on: workdlow_call
+on: workflow_call
 
 jobs:
   docker-build:
     runs-on: ubuntu-latest
     container:
       image: lakruzz/androiddev
-      options: 
-      - --entrypoint "/bin/bash"
+      options: --entrypoint "/bin/bash"
     steps:
       - uses: actions/checkout@v3
       - run: gradle
