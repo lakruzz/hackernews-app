@@ -11,5 +11,6 @@ jobs:
       options: --entrypoint=jekyll
     steps:
       - run: ls
+      - run: jekyll
 
       
