@@ -1,3 +1,4 @@
+# https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container#example-running-a-job-within-a-container
 name: Java CI
 
 on: [push]
@@ -7,12 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: lakruzz/androiddev
-      volumes:
-        - $(pwd):/app
-      options: --workdir /app
-
     steps:
-      - name: androiddev
-        run: gradle
+      - uses: actions/checkout@v3
+      - run: gradle
 
       
