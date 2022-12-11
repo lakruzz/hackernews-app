@@ -10,10 +10,13 @@ jobs:
       image: lakruzz/androiddev
     steps:
       - run: echo - ${{ github.repository }}
-      - run: git clone --depth 1 https://github.com/${{github.repository}}.git repo && \
-             cd repo && \
-             pwd && ls
-      - run: env | sort
+      - run: |
+          git clone --depth 1 https://github.com/${{github.repository}}.git repo
+          cd repo
+      - run: |
+          pwd
+          ls
+          env | sort
       - run: gradle
 
       
