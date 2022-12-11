@@ -9,14 +9,18 @@ jobs:
     container:
       image: lakruzz/androiddev
     steps:
-      - run: echo - ${{ github.repository }}
-      - run: |
+      - name: Clone the git repo ${{ github.repository }}
+        run: |
           git clone --depth 1 https://github.com/${{github.repository}}.git repo
           cd repo
-      - run: |
+      - name: Output state
+        run: |
           pwd
           ls
           env | sort
-      - run: gradle
+      - name: Build using gradle (using the version installed on the docker image)
+        run: gradle
+      - name: Build again using gradlew (pulling the entire Gradle version off then internet)
+        run: gradlew
 
       
