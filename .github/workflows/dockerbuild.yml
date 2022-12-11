@@ -10,10 +10,9 @@ jobs:
       image: lakruzz/androiddev
     steps:
       - name: Clone the git repo ${{ github.repository }}
-        run: git clone --depth 1 https://github.com/${{github.repository}}.git repo 
-      - name: Enter repo and output state
+        run: git clone --depth 1 https://github.com/${{github.repository}}.git . 
+      - name: Output state
         run: |
-          cd repo
           pwd
           ls
           env | sort
