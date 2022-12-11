@@ -15,6 +15,8 @@ jobs:
       - uses: actions/checkout@v3
       - run: cd ~ && pwd && ls
       - run: env | sort
+      - run: echo - ${{ github.workspace }}:/wd
       - run: jekyll --help
+
 
       
