@@ -9,12 +9,11 @@ jobs:
     container:
       image: lakruzz/jekyll-plus
       volumes:
-        - ${{ github.workspace }}:/app
-      options: --workdir=/app
+        - ${{ github.workspace }}:/wd
+      options: --workdir=/wd
     steps:
       - uses: actions/checkout@v3
-      - run: ls
-      - run: cd app && ls
+      - run: pwd && ls
       - run: env | sort
       - run: jekyll --help
 
