@@ -12,10 +12,10 @@ jobs:
         - ${{ github.workspace }}:/wd
       options: --workdir=/wd
     steps:
+      - run: echo - ${{ github.repository }}:/wd
       - uses: actions/checkout@v3
       - run: cd ~ && pwd && ls
       - run: env | sort
-      - run: echo - ${{ github.workspace }}:/wd
       - run: gradle
 
       
