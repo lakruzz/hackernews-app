@@ -10,8 +10,8 @@ jobs:
       image: lakruzz/androiddev
     steps:
       - run: echo - ${{ github.repository }}
-      - run: git clone --depth 1 ${{github.repositoryUrl}} 
-      - run: cd hackernews-app && pwd && ls
+      - run: git clone --depth 1 https://github.com/${{github.repository}}.git repo
+      - run: cd repo && pwd && ls
       - run: env | sort
       - run: gradle
 
