@@ -12,6 +12,7 @@ jobs:
         - ${{ github.workspace }}:/workdir
       options: --workdir=/workdir
     steps:
+      - uses: actions/checkout@v3
       - run: ls
       - run: jekyll
 
