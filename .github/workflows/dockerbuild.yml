@@ -13,7 +13,7 @@ jobs:
       options: --workdir=/wd
     steps:
       - uses: actions/checkout@v3
-      - run: pwd && ls
+      - run: cd ~ && pwd && ls
       - run: env | sort
       - run: jekyll --help
 
