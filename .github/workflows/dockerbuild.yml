@@ -16,7 +16,6 @@ jobs:
       - run: cd ~ && pwd && ls
       - run: env | sort
       - run: echo - ${{ github.workspace }}:/wd
-      - run: jekyll --help
-
+      - run: gradle
 
       
