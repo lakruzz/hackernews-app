@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: ls
-      - run: env
+      - run: cd app && ls
+      - run: env | sort
       - run: jekyll --help
 
       
