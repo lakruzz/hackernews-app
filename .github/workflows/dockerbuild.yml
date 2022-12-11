@@ -16,6 +16,8 @@ jobs:
           pwd
           ls
           env | sort
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
       - name: Build using gradle (using the version installed on the docker image)
         run: gradle
       - name: Output state
@@ -25,4 +27,8 @@ jobs:
           env | sort
       - name: Build again using the gradlew script in the repo (pulling the entire Gradle version off then internet)
         run: ./gradlew 
+      - name: Build with Gradle Action
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
       
