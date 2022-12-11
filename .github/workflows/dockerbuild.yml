@@ -19,7 +19,11 @@ jobs:
           env | sort
       - name: Build using gradle (using the version installed on the docker image)
         run: gradle
+      - name: Output state
+        run: |
+          pwd
+          ls
+          env | sort
       - name: Build again using the gradlew script in the repo (pulling the entire Gradle version off then internet)
-        run: bash -c ./gradlew  # Overrding thre shabang in the script
-
+        run: ./gradlew 
       
