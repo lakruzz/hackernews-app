@@ -20,7 +20,6 @@ jobs:
       - name: Build using gradle (using the version installed on the docker image)
         run: gradle
       - name: Build again using the gradlew script in the repo (pulling the entire Gradle version off then internet)
-        run: |
-          chmod +x gradlew && ./gradlew
+        run: bash -c ./gradlew  # Overrding thre shabang in the script
 
       
