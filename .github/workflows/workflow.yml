@@ -4,13 +4,32 @@ name: Java CI
 on: [push]
 
 jobs:
-  docker-gradle:
+  clone:
     runs-on: ubuntu-latest
     container:
       image: lakruzz/androiddev
     steps:
       - name: Clone the git repo ${{ github.repository }}
         run: git clone --depth 1 https://github.com/${{github.repository}}.git . 
+      - uses: actions/cache@v3
+        id: gitrepo
+        with:
+          key: ${{ github.repository }}-${{ github.sha }}
+      - name: Output state
+        run: |
+          pwd
+          ls
+          env | sort
+  docker-gradle:
+    needs: clone
+    runs-on: ubuntu-latest
+    container:
+      image: lakruzz/androiddev
+    steps:
+      - uses: actions/cache@v3
+        id: gitrepo
+        with:
+          key: ${{ github.repository }}-${{ github.sha }}
       - name: Output state
         run: |
           pwd
@@ -22,13 +41,15 @@ jobs:
         run: gradle
 
   docker-gradlew:
-    needs: docker-gradle
+    needs: clone
     runs-on: ubuntu-latest
     container:
       image: lakruzz/androiddev
     steps:
-      - name: Clone the git repo ${{ github.repository }}
-        run: git clone --depth 1 https://github.com/${{github.repository}}.git . 
+      - uses: actions/cache@v3
+        id: gitrepo
+        with:
+          key: ${{ github.repository }}-${{ github.sha }}
       - name: Output state
         run: |
           pwd
@@ -40,7 +61,6 @@ jobs:
         run: ./gradlew 
   
   action-gradlew:
-    needs: [docker-gradle, docker-gradlew]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
