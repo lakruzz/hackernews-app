@@ -21,6 +21,8 @@ jobs:
           pwd
           ls
           env | sort
+          
+ 
   docker-gradle:
     needs: clone
     runs-on: ubuntu-latest
